@@ -1,0 +1,22 @@
+To test hx,
+
+cat filename | hx | less
+
+echo string | hx
+
+Example:
+
+echo "The quick brown fox jumps over the lazy dog" | hx 
+
+000000  54686520 71756963  6b206272 6f776e20  *The quick brown *
+000010  666f7820 6a756d70  73206f76 65722074  *fox jumps over t*
+000020  6865206c 617a7920  646f670a           *he lazy dog     *
+
+Example:
+
+cat inst.sh | hx
+
+000000  23212f62 696e2f62  6173680a 6d616b65  *#!/bin/bash make*
+000010  202d6620 68782e6d  616b0a             * -f hx.mak      *
+
+-------------------------------------------------------------------------
