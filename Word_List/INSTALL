@@ -1,0 +1,19 @@
+Make inst.sh and deinst.sh and tst.sh executable.
+
+chmod 700 *.sh
+
+Compile vocab.c with the script inst.sh.
+
+De-install this directory with deinst.sh.
+
+Simple test:
+
+echo "Didn't you see John's toy?" | vocab
+
+Longer test:
+
+Save Moby Dick in plain text as MobyDick
+
+tst.sh MobyDick
+
+The sorted output will be in MobyDick.lst 
