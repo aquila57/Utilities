@@ -1,6 +1,6 @@
 # Utilities
 
-This repository contains Linux utilities.
+This repository contains Linux utilities.  Each utility is in a separate directory.
 
 Hexadecimal_Dump - hexidecimal dump of a standard input file
 
