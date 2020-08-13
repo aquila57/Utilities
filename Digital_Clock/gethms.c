@@ -22,31 +22,25 @@
 
 void gethms(xxfmt *xx)
    {
-   double totsec;
-   double days;
-   double dblhrs;
-   double dblhh;
-   double dblmin;
-   double dblmm;
-   double dblsec;
-   double dblss;
    /* get clock ticks since boot                          */
    xx->clk = times(&xx->t);
    /* get date & time, in sec since 1970.1.1 00:00:00     */
-   time(&xx->now);
-   days = (double) xx->now / SPD;
-   totsec = floor(((days - floor(days)) * SPD) + 0.01);
-   dblhrs = (totsec / 3600.0) - 6.0;
-   if (dblhrs < 0.0) dblhrs += 24.0;
-   dblhh  = floor(dblhrs + 0.01);
-   dblmin = (dblhrs - floor(dblhrs)) * 60.0;
-   dblmm  = floor(dblmin + 0.01);
-   dblsec = (dblmin - floor(dblmin)) * 60.0;
-   dblss  = floor(dblsec + 0.01);
-   xx->hour = (int) dblhh;
-   xx->minute = (int) dblmm;
-   if (dblss >= 60.0) dblss = 0;
-   xx->second = (int) dblss;
-   if (xx->hour >= 12) xx->ampm = 1;
-   else xx->ampm = 0;
+   xx->now = time(NULL);
+   /* populate the tm structure loctime */
+   xx->loctime = localtime(&xx->now);
+   xx->hour = xx->loctime->tm_hour;
+   if (xx->hour > 23) xx->hour -= 24;
+   if (xx->hour > 11)
+      {
+      xx->ampm = 1;
+      } /* if PM */
+   else
+      {
+      xx->ampm = 0;
+      } /* if AM */
+   xx->minute = xx->loctime->tm_min;
+   xx->second = xx->loctime->tm_sec;
+   xx->ytd    = xx->loctime->tm_yday;
+   xx->dow    = xx->loctime->tm_wday;
+   xx->dst    = xx->loctime->tm_isdst;
    } /* gethms */
