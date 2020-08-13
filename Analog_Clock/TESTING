@@ -1,0 +1,19 @@
+Here is how you run the three analog clocks in this repository.
+
+Time of day clock has no parameters.
+
+clk
+
+--------
+
+Stop watch has no parameters.
+
+stopw
+
+--------
+
+Count down timer has one parameter, wait time in seconds.
+
+timer 300
+
+This example sets the count down timer for 5 minutes.
