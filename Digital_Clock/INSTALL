@@ -1,5 +1,8 @@
-
 To install this repository:
+
+If you don't have it, install the Debian beep package.
+
+sudo apt-get install beep
 
 chmod 700 *.sh
 
