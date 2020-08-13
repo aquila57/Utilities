@@ -22,7 +22,7 @@ along with this program; if not, write to:
 
 /* press 'q' to exit */
 
-#include "tim.h"
+#include "crsclk.h"
 
 void putstx(char *pgm)
    {

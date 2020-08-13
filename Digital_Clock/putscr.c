@@ -20,7 +20,7 @@ along with this program; if not, write to:
 	Boston, MA  02111-1307, USA.
 */
 
-#include "tim.h"
+#include "crsclk.h"
 
 void putscr(xxfmt *xx)
    {
@@ -58,4 +58,5 @@ void putscr(xxfmt *xx)
       addstr(ln);
       row++;
       } /* for each row */
+   move(0,0);
    } /* putscr */

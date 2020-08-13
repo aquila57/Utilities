@@ -48,6 +48,8 @@ typedef struct xxstruct {
    int dst;         /* CST vs DST 0 = standard, 1 = daylight */
    int dow;                   /* day of week 0-6 */
    int ytd;                   /* day of year 0-365 */
+   int endsec;                /* ending time in seconds */
+   int currsec;               /* current time in seconds */
    double jd;
    char *font;
    } xxfmt;

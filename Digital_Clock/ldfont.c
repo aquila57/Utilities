@@ -20,7 +20,7 @@ along with this program; if not, write to:
 	Boston, MA  02111-1307, USA.
 */
 
-#include "tim.h"
+#include "crsclk.h"
 
 void ldfont(xxfmt *xx)
    {
