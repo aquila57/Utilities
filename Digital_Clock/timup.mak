@@ -30,9 +30,9 @@ CC=gcc
 
 CFLAGS=-c -Wall -O2
 
-LDFLAGS=-L. -ltim -lncurses -lm
+LDFLAGS=-L. -lclk -lncurses -lm
 
-timup:				$(OBJ) libtim.a
+timup:				$(OBJ) libclk.a
 		$(CC) -Wall -O2 $(OBJ) -o timup $(LDFLAGS)
 
 timup.o:			timup.c
