@@ -674,6 +674,7 @@ void done(xxfmt *xx)
       XDrawString(xx->dpy, xx->w, xx->gc,
          xx->xc - 100, xx->yc, str, len);
       XFlush(xx->dpy);
+      system("beep -f 55 -l 200");
       sleep(1);
       XClearWindow(xx->dpy, xx->w);
       XClearArea(xx->dpy, xx->w,
@@ -686,6 +687,7 @@ void done(xxfmt *xx)
       XDrawString(xx->dpy, xx->w, xx->gc,
          xx->xc - 100, xx->yc, str, len);
       XFlush(xx->dpy);
+      system("beep -f 55 -l 200");
       sleep(1);
       ifkey(xx);
       } /* loop 1000 seconds */
