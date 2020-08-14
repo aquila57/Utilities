@@ -20,3 +20,13 @@ cat inst.sh | hx
 000010  202d6620 68782e6d  616b0a             * -f hx.mak      *
 
 -------------------------------------------------------------------------
+
+Windows version
+---------------
+
+hx.exe works under Windows.
+
+Example:
+
+echo "The quick brown fox jumps over the lazy dog" | hx.exe
+
