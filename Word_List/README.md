@@ -8,6 +8,14 @@ In UTF-8 text, the single quote is not 0x27.  Therefore a single quote in a UTF-
 
 Examples of running vocab:
 
-cat moby_dick.txt | vocab | sort
+cat MobyDick | vocab | sort
 
 This example prints the list of words in Moby Dick in word count order.
+
+# Windows
+
+vocab.exe works on Windows
+
+Example:
+
+vocab.exe <MobyDick | sort
