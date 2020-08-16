@@ -1,0 +1,15 @@
+
+To install this repository:
+
+chmod 700 *.sh
+
+inst.sh
+
+--------
+
+To de-install this repository:
+
+
+deinst.sh
+
+--------
