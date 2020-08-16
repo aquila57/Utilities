@@ -7,13 +7,37 @@ separated by a new line.
 
 The Python versions of this program are intended for Mac OSX.
 
-The EXE version of this program runs on Windows 10.
-
 The following test scripts show you how to run the scrmbl
 program.
 
-tst.sh filename
+On Linux, run the following test:
 
-tstpy.sh filename
+cat scrmbl.c | scrmbl
 
-tstwin.bat filename
+The order of the lines in the program should be scrambled.
+
+----
+
+On Mac OSX, run the fillowing test:
+
+python scrmbl.py <scrmbl.c
+
+The order of the lines in the program should be scrambled.
+
+----
+
+On Windows, run the following test:
+
+scrmbl.exe <scrmbl.c
+
+The order of the lines in the program should be scrambled.
+
+----
+
+On Wine, run the following test:
+
+wine scrmbl.exe <scrmbl.c
+
+The order of the lines in the program should be scrambled.
+
+----
