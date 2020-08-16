@@ -1,0 +1,1 @@
+scrmbl.exe <%1
