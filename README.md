@@ -7,6 +7,8 @@ Analog_Clock - time of day clock, stop watch, and count down timer.
 
 ASCII_Table - print ASCII characters with their hexadecimal values.
 
+CRC32 - calculate 32 bit crc of stdin file
+
 Digital_Clock - digital time of day clock, Julian Day clock, stop watch,
    and count down timer.
 
