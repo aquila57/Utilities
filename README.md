@@ -13,6 +13,8 @@ Digital_Clock - digital time of day clock, Julian Day clock, stop watch,
 Hexadecimal_Dump - hexidecimal dump of a standard input file or block
    of memory.
    
+Prime_Numbers - Print prime numbers based on input parameters.
+   
 Random_Lists - Create random lists of letters and numbers.
 
 Scramble - Scramble the order of a list of text.
