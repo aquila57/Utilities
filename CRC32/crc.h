@@ -1,4 +1,4 @@
-/* bldtbl.c - Cyclical Reduncancy Check, Build Table  Version 0.1.0  */
+/* crc.h - 32 bit Cyclical Reduncancy Check header  Version 0.1.0    */
 /* Copyright (C) 2020 aquila57 at github.com                         */
 
 /* This program is free software; you can redistribute it and/or     */
@@ -18,31 +18,18 @@
    /* 59 Temple Place - Suite 330                                    */
    /* Boston, MA 02111-1307, USA.                                    */
 
-/* This subroutine is for is a 32 bit cyclical redundancy check  */
-/* This subroutine builds the table used by the crc calculation  */
-/* tbl must have 256 elements                                    */
+/* This is the header file for a 32 bit cyclical redundancy check  */
 
 /* https://www.cl.cam.ac.uk/research/srg/bluebook/21/crc/node6.html  */
 
-#include "crc.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
-void bldtbl(unsigned int *tbl)
-   {
-   int i;
-   for (i=0;i<256;i++)
-      {
-      int j;
-      unsigned int remainder;
-      remainder = i;
-      for (j=0;j<8;j++)
-         {
-	 if (remainder & 1)
-	    {
-	    remainder >>= 1;
-	    remainder ^= 0xedb88320;
-	    } /* if remainder & 1 */
-	 else remainder >>= 1;
-	 } /* for each bit */
-      tbl[i] = remainder;
-      } /* for each 32 bit integer in table */
-   } /* bldtbl */
+#define QUOTIENT (0x04c11db7)
+
+void bldtbl(unsigned int *tbl);
+unsigned int crc32(unsigned char *str,
+   int len, unsigned int *tbl);
+unsigned int crc32nxt(unsigned int oldcrc,
+   unsigned char *str, int len, unsigned int *tbl);

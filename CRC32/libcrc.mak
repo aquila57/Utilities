@@ -19,7 +19,8 @@
    #  Boston, MA 02111-1307, USA.
 
 OBJ=bldtbl.o \
-	crc32.o
+	crc32.o \
+	crc32nxt.o
 
 CC=gcc
 
@@ -36,6 +37,9 @@ bldtbl.o:			bldtbl.c
 
 crc32.o:			crc32.c
 		$(CC) $(CFLAGS) crc32.c
+
+crc32nxt.o:			crc32nxt.c
+		$(CC) $(CFLAGS) crc32nxt.c
 
 clean:
 		rm -f $(OBJ) libcrc.a

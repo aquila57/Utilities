@@ -22,11 +22,7 @@
 
 /* https://www.cl.cam.ac.uk/research/srg/bluebook/21/crc/node6.html  */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-
-#define QUOTIENT (0x04c11db7)
+#include "crc.h"
 
 unsigned int crc32(unsigned char *str, int len, unsigned int *tbl)
    {

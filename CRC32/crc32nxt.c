@@ -1,4 +1,4 @@
-/* bldtbl.c - Cyclical Reduncancy Check, Build Table  Version 0.1.0  */
+/* crc32nxt.c - Next 32 bit CRC block  Version 0.1.0                 */
 /* Copyright (C) 2020 aquila57 at github.com                         */
 
 /* This program is free software; you can redistribute it and/or     */
@@ -18,31 +18,33 @@
    /* 59 Temple Place - Suite 330                                    */
    /* Boston, MA 02111-1307, USA.                                    */
 
-/* This subroutine is for is a 32 bit cyclical redundancy check  */
-/* This subroutine builds the table used by the crc calculation  */
-/* tbl must have 256 elements                                    */
+/* This is a 32 bit cyclical redundancy check  */
+/* This subroutine calculates the CRC for every block of data   */
+/* except the first block */
+/* The subroutine for calculating the first block of data is    */
+/* called crc32().    */
 
 /* https://www.cl.cam.ac.uk/research/srg/bluebook/21/crc/node6.html  */
 
 #include "crc.h"
 
-void bldtbl(unsigned int *tbl)
+unsigned int crc32nxt(unsigned int oldcrc,
+   unsigned char *str, int len, unsigned int *tbl)
    {
-   int i;
-   for (i=0;i<256;i++)
+   unsigned char *p,*q;
+   unsigned int crc;          /* 32 bit crc */
+
+   /***************************************************/
+   /* restore previous crc                            */
+   /***************************************************/
+   crc = ~oldcrc;
+   p = (unsigned char *) str;
+   q = (unsigned char *) str + len;
+   while (p < q)
       {
-      int j;
-      unsigned int remainder;
-      remainder = i;
-      for (j=0;j<8;j++)
-         {
-	 if (remainder & 1)
-	    {
-	    remainder >>= 1;
-	    remainder ^= 0xedb88320;
-	    } /* if remainder & 1 */
-	 else remainder >>= 1;
-	 } /* for each bit */
-      tbl[i] = remainder;
-      } /* for each 32 bit integer in table */
-   } /* bldtbl */
+      unsigned char octet;
+      octet = *p++;
+      crc = (crc >> 8) ^ tbl[(crc & 0xff) ^ octet];
+      } /* for each byte in str */
+   return(~crc);            /* The complement of the remainder */
+   } /* crc32nxt */
