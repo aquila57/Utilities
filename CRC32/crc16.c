@@ -29,7 +29,7 @@
 /* This subroutine is not a CRC update subroutine */
 /* The CRC is always initialized to zero in this subroutine */
 /* See crc16nxt.c for a CRC16 update subroutine. */
-/* The CRC for 123456789 in this subroutine is 0x31C3. 
+/* The CRC for 123456789 in this subroutine is 0x31C3. */ 
 
 #include <stdio.h>
 #include <stdlib.h>
