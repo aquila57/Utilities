@@ -20,7 +20,9 @@
 
 OBJ=bldtbl.o \
 	crc32.o \
-	crc32nxt.o
+	crc32nxt.o \
+	crc16.o \
+	crc16nxt.o
 
 CC=gcc
 
@@ -40,6 +42,12 @@ crc32.o:			crc32.c
 
 crc32nxt.o:			crc32nxt.c
 		$(CC) $(CFLAGS) crc32nxt.c
+
+crc16.o:			crc16.c
+		$(CC) $(CFLAGS) crc16.c
+
+crc16nxt.o:			crc16nxt.c
+		$(CC) $(CFLAGS) crc16nxt.c
 
 clean:
 		rm -f $(OBJ) libcrc.a
