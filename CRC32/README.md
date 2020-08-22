@@ -5,6 +5,8 @@ The crc generated matches the crc in pkzip.
 
 crc - Print 32 bit crc of stdin file.
 
+## CRC Library
+
 The library of crc subroutines may be used in other programs.
 
 bldtbl.c - build a crc table for crc calculation.
