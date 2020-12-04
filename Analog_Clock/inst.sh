@@ -1,4 +1,5 @@
 #!/bin/bash
 make -f clk.mak
+make -f xclk.mak
 make -f stopw.mak
 make -f timer.mak

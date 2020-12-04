@@ -1,8 +1,14 @@
-Here is how you run the three analog clocks in this repository.
+Here is how you run the four analog clocks in this repository.
 
-Time of day clock has no parameters.
+Time of day clock, clk, has no parameters.
 
 clk
+
+--------
+
+Time of day clock, xclk, has no parameters.
+
+xclk
 
 --------
 
