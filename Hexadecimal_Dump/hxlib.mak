@@ -1,4 +1,4 @@
-# hx.mak - Compile hx.c  Version 0.1.0
+# hxlib.mak - Compile hx subroutine library  Version 0.1.0
 # Copyright (C) 2020 aquila57 at github.com
 
 # This program is free software; you can redistribute it and/or
@@ -18,19 +18,28 @@
 #     59 Temple Place - Suite 330
 #     Boston, MA  02111-1307, USA.
 
-OBJ=hx.o
+OBJ=hxline.o \
+	getbyte.o \
+	hxmem.o
 
 CC=gcc
 
 CFLAGS=-c -Wall -O2
 
-LDFLAGS=-L. -lhx
+LDFLAGS=
 
-hx:				$(OBJ) libhx.a
-		$(CC) -Wall -O2 $(OBJ) -o hx $(LDFLAGS)
+libhx.a:			$(OBJ)
+		rm -f libhx.a
+		ar r libhx.a $(OBJ)
 
-hx.o:				hx.c
-		$(CC) $(CFLAGS) hx.c
+hxline.o:			hxline.c
+		$(CC) $(CFLAGS) hxline.c
+
+getbyte.o:			getbyte.c
+		$(CC) $(CFLAGS) getbyte.c
+
+hxmem.o:			hxmem.c
+		$(CC) $(CFLAGS) hxmem.c
 
 clean:
-		rm -f $(OBJ) hx
+		rm -f $(OBJ) libhx.a

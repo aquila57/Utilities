@@ -1,4 +1,4 @@
-/* hx.c - Hexadecimal dump of stdin file  Version 0.1.0 */
+/* getbyte.c - Read stdin file  Version 0.1.0 */
 /* Copyright (C) 2020 aquila57 at github.com */
 
 /* This program is free software; you can redistribute it and/or     */
@@ -21,24 +21,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include "hx.h"
 
-int main(void)
+/* read one byte from stdin */
+/* at end of file, return EOF */
+
+int getbyte(void)
    {
-   int rslt;        /* end of file result */
-   int addr;        /* address of each line */
-   addr = rslt = 0;
-   while (!rslt)
+   int len;
+   unsigned char buf[8];
+   len = read(0,buf,1);
+   if (!len) return(EOF);
+   if (len != 1)
       {
-      if (addr > 0xffffff)
-	 {
-	 fprintf(stderr,"main: input exceeds "
-	    "16 megabytes\n");
-         break;
-	 } /* more than 16 meg */
-      printf("%06x  ", addr);    /* print line address */
-      rslt = hxline();       /* print 16 bytes in hex and ASCII */
-      addr += 16;
-      } /* for each 16 byte line */
-   return(0);
-   } /* main */
+      fprintf(stderr,"getbyte: read error\n");
+      exit(1);
+      } /* read error */
+   return(buf[0]);
+   } /* getbyte */

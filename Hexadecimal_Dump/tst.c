@@ -2,8 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-
-void hxmem(int len, unsigned char *mem);
+#include "hx.h"
 
 int main(void)
    {

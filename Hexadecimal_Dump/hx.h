@@ -1,4 +1,4 @@
-/* hx.c - Hexadecimal dump of stdin file  Version 0.1.0 */
+/* hx.h - Hexadecimal dump header  Version 0.1.0 */
 /* Copyright (C) 2020 aquila57 at github.com */
 
 /* This program is free software; you can redistribute it and/or     */
@@ -21,24 +21,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include "hx.h"
 
-int main(void)
-   {
-   int rslt;        /* end of file result */
-   int addr;        /* address of each line */
-   addr = rslt = 0;
-   while (!rslt)
-      {
-      if (addr > 0xffffff)
-	 {
-	 fprintf(stderr,"main: input exceeds "
-	    "16 megabytes\n");
-         break;
-	 } /* more than 16 meg */
-      printf("%06x  ", addr);    /* print line address */
-      rslt = hxline();       /* print 16 bytes in hex and ASCII */
-      addr += 16;
-      } /* for each 16 byte line */
-   return(0);
-   } /* main */
+int getbyte(void);
+/* print a 16 byte block in hex and ASCII */
+int hxline(void);
+void hxmem(int len, unsigned char *mem);

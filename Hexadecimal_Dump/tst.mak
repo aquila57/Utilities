@@ -18,23 +18,19 @@
 #     59 Temple Place - Suite 330
 #     Boston, MA  02111-1307, USA.
 
-OBJ=tst.o \
-	hxmem.o
+OBJ=tst.o
 
 CC=gcc
 
 CFLAGS=-c -Wall -O2
 
-LDFLAGS=
+LDFLAGS=-L. -lhx
 
-tst:				$(OBJ)
+tst:				$(OBJ) libhx.a
 		$(CC) -Wall -O2 $(OBJ) -o tst $(LDFLAGS)
 
 tst.o:				tst.c
 		$(CC) $(CFLAGS) tst.c
-
-hxmem.o:			hxmem.c
-		$(CC) $(CFLAGS) hxmem.c
 
 clean:
 		rm -f $(OBJ) tst
