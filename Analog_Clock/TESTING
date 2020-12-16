@@ -18,6 +18,12 @@ stopw
 
 --------
 
+XWindows stop watch has no parameters.
+
+xstopw
+
+--------
+
 Count down timer has one parameter, wait time in seconds.
 
 timer 300
