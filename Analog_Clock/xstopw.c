@@ -472,6 +472,8 @@ void telltime(xxfmt *xx)
    while (xx->runflg)
       {
       xx->stop = xx->reset = 0;
+      XSetBackground(xx->dpy, xx->gc, xx->whiteColor);
+      XSetForeground(xx->dpy, xx->gc, xx->redColor);
       /* x,y,wdth,hght,angle1,angle2 */
       XDrawArc(xx->dpy, xx->w, xx->gc,
 	 xx->xc-xx->arr,xx->yc-xx->arr,
