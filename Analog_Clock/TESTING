@@ -6,25 +6,35 @@ clk
 
 --------
 
-Time of day clock, xclk, has no parameters.
+X Windows time of day clock, xclk, has no parameters.
 
 xclk
 
 --------
 
-Stop watch has no parameters.
+Stop watch, stopw, has no parameters.
 
 stopw
 
 --------
 
-XWindows stop watch has no parameters.
+X Windows stop watch, xstopw, has no parameters.
 
 xstopw
 
 --------
 
-Count down timer has one parameter, wait time in seconds.
+Count down timer, timer, has one parameter,
+wait time in seconds.
+
+timer 300
+
+This example sets the count down timer for 5 minutes.
+
+--------
+
+Count down timer, xtimer, has one parameter,
+wait time in seconds.
 
 timer 300
 

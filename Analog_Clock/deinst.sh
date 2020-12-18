@@ -4,3 +4,4 @@ make -f xclk.mak clean
 make -f stopw.mak clean
 make -f xstopw.mak clean
 make -f timer.mak clean
+make -f xtimer.mak clean

@@ -1,5 +1,5 @@
 /*
-timer.c Version 0.1.0. Analog clock timer
+xtimer.c Version 0.1.0. Analog clock timer
 Copyright (C) 2020 aquila57  at github.com
 
 This program is free software; you can redistribute it and/or
@@ -49,7 +49,6 @@ typedef struct xxstruct {
    int dpywdth;     /* display window width  */
    int repeat;
    int runflg;
-   int winticks;
    Display *dpy;
    Window w;
    GC gc;
@@ -260,185 +259,16 @@ void gettim(xxfmt *xx)
    XSetIconName(xx->dpy,xx->w,str);
    } /* gettim */
 
-/* draw one red pixel on the screen */
 
-void putpxl(xxfmt *xx, int x, int y)
-   {
-   XSetBackground(xx->dpy, xx->gc, xx->whiteColor);
-   XSetForeground(xx->dpy, xx->gc, xx->redColor);
-   XDrawPoint(xx->dpy,xx->w,xx->gc,x,y);
-   } /* putpxl */
-
-/* Bresenham's algorithm   */
-/* Function to put pixels  */
-/* at subsequence points   */
-
-void drawCircle(xxfmt *xx, int x, int y) 
-   { 
-   putpxl(xx, xx->xc+x, xx->yc+y); 
-   putpxl(xx, xx->xc-x, xx->yc+y); 
-   putpxl(xx, xx->xc+x, xx->yc-y); 
-   putpxl(xx, xx->xc-x, xx->yc-y); 
-   putpxl(xx, xx->xc+y, xx->yc+x); 
-   putpxl(xx, xx->xc-y, xx->yc+x); 
-   putpxl(xx, xx->xc+y, xx->yc-x); 
-   putpxl(xx, xx->xc-y, xx->yc-x); 
-   } 
-  
-/* Function for circle-generation   */
-/* using Bresenham's algorithm      */
-
-void circleBres(xxfmt *xx)
-   { 
-   int x = 0, y = xx->arr; 
-   int d = 3 - 2 * xx->arr; 
-   drawCircle(xx, x, y); 
-   while (y >= x) 
-      { 
-      /**********************************/
-      /* for each pixel we will         */
-      /* draw all eight pixels          */
-      /**********************************/
-      x++; 
-      /**********************************/
-      /* check for decision parameter   */
-      /* and correspondingly            */
-      /* update d, x, y                 */
-      /**********************************/
-      if (d > 0) 
-         { 
-         y--;  
-         d = d + 4 * (x - y) + 10; 
-         } 
-      else
-         d = d + 4 * x + 6; 
-      drawCircle(xx, x, y); 
-      } /* while x >= y */
-   } /* circleBres */
-
-/* calculate absolute value of an integer */
-
-int abs(int x)
-   {
-   if (x < 0) return(-x);
-   return(x);
-   } /* abs */
-
-/* erase one pixel on the screen */
-
-void unplot(xxfmt *xx, int x, int y)
-   {
-   XSetBackground(xx->dpy, xx->gc, xx->whiteColor);
-   XSetForeground(xx->dpy, xx->gc, xx->whiteColor);
-   XDrawPoint(xx->dpy,xx->w,xx->gc,x,y);
-   } /* unplot */
-
-/* draw one red pixel on the screen */
-
-void plot(xxfmt *xx, int x, int y)
-   {
-   if (xx->erase)
-      {
-      unplot(xx, x, y);
-      } /* if erase the line */
-   else
-      {
-      XSetBackground(xx->dpy, xx->gc, xx->whiteColor);
-      XSetForeground(xx->dpy, xx->gc, xx->redColor);
-      XDrawPoint(xx->dpy,xx->w,xx->gc,x,y);
-      } /* else print the line */
-   } /* plot */
-
-/* draw a straight line using Bresenham's algorithm */
-
-void plotLineLow(xxfmt *xx, int x0,int y0, int x1,int y1)
-   {
-   int dx,dy;
-   int yi;
-   int D;
-   int x,y;
-   dx = x1 - x0;
-   dy = y1 - y0;
-   yi = 1;
-   if (dy < 0)
-      {
-      yi = -1;
-      dy = -dy;
-      } /* if dy < 0 */
-   D = 2*dy - dx;
-   y = y0;
-   x = x0;
-   while (x <= x1)
-      {
-      plot(xx, x,y);
-      if (D > 0)
-         {
-         y += yi;
-         D = D - 2*dx;
-         } /* if D > 0 */
-      D = D + 2*dy;
-      x++;
-      } /* while x <= x1 */
-   } /* plotLineLow */
-
-/* draw a straight line using Bresenham's algorithm */
-
-void plotLineHigh(xxfmt *xx, int x0, int y0, int x1, int y1)
-   {
-   int dx,dy;
-   int xi;
-   int x,y;
-   int D;
-   dx = x1 - x0;
-   dy = y1 - y0;
-   xi = 1;
-   if (dx < 0)
-      {
-      xi = -1;
-      dx = -dx;
-      } /* if dx < 0 */
-   D = 2*dx - dy;
-   x = x0;
-   y = y0;
-   while (y <= y1)
-      {
-      plot(xx, x,y);
-      if (D > 0)
-         {
-         x = x + xi;
-         D = D - 2*dy;
-         } /* if D > 0 */
-      D = D + 2*dx;
-      y++;
-      } /* while y <= y1 */
-   } /* plotLineHigh */
-
-/* draw a straight line using Bresenham's algorithm */
-
-void plotLine(xxfmt *xx, int x0, int y0, int x1, int y1)
-   {
-   if (abs(y1 - y0) < abs(x1 - x0))
-      {
-      if (x0 > x1)
-         plotLineLow(xx, x1, y1, x0, y0);
-      else
-         plotLineLow(xx, x0, y0, x1, y1);
-      } /* if abs(y1-y0) < abs(x1-x0) */
-   else
-      {
-      if (y0 > y1)
-         plotLineHigh(xx, x1, y1, x0, y0);
-      else
-         plotLineHigh(xx, x0, y0, x1, y1);
-      } /* else abs(y1-y0) >= abs(x1-x0) */
-   } /* plotLine */
-
-/* erase a straight line using Bresenham's algorithm */
+/* erase a straight line using X Windows */
 
 void eraseLine(xxfmt *xx, int x0, int y0, int x1, int y1)
    {
    xx->erase = 1;
-   plotLine(xx, x0, y0, x1, y1);
+   XSetBackground(xx->dpy, xx->gc, xx->whiteColor);
+   XSetForeground(xx->dpy, xx->gc, xx->whiteColor);
+   XDrawLine(xx->dpy, xx->w, xx->gc,
+      x0, y0, x1, y1);
    xx->erase = 0;
    } /* eraseLine */
 
@@ -463,6 +293,8 @@ void putticks(xxfmt *xx)
    double cosx;
    double dblexx;
    double dblwyy;
+   XSetBackground(xx->dpy, xx->gc, xx->whiteColor);
+   XSetForeground(xx->dpy, xx->gc, xx->redColor);
    dblarr = (double) xx->arr;
    dblhrarr = (double) xx->arr * 0.92;
    dblminarr = (double) xx->arr * 0.96;
@@ -492,7 +324,8 @@ void putticks(xxfmt *xx)
          hrwyy  = (int) dblwyy;
          hrexx += xx->xc;
          hrwyy += xx->yc;
-         plotLine(xx, hrexx, hrwyy, exx, wyy);
+         XDrawLine(xx->dpy, xx->w, xx->gc,
+            hrexx, hrwyy, exx, wyy);
          } /* if every 5 minutes */
       else
          {
@@ -502,7 +335,8 @@ void putticks(xxfmt *xx)
          minwyy = (int) dblwyy;
          minexx += xx->xc;
          minwyy += xx->yc;
-         plotLine(xx, minexx, minwyy, exx, wyy);
+         XDrawLine(xx->dpy, xx->w, xx->gc,
+            minexx, minwyy, exx, wyy);
          } /* else not hour tick */
       /********************************************************/
       min++;
@@ -513,6 +347,8 @@ void putticks(xxfmt *xx)
 
 void puthrs(xxfmt *xx)
    {
+   XSetBackground(xx->dpy, xx->gc, xx->whiteColor);
+   XSetForeground(xx->dpy, xx->gc, xx->blackColor);
    XDrawString(xx->dpy, xx->w, xx->gc,
 	   338, 102, "12", 2);
    XDrawString(xx->dpy, xx->w, xx->gc,
@@ -566,7 +402,13 @@ void telltime(xxfmt *xx)
    dblhrarr = (double) xx->hrarr;
    while (xx->runflg && xx->t < xx->timestop)
       {
-      circleBres(xx);    /* function call  */
+      XSetBackground(xx->dpy, xx->gc, xx->whiteColor);
+      XSetForeground(xx->dpy, xx->gc, xx->redColor);
+      /* x,y,wdth,hght,angle1,angle2 */
+      XDrawArc(xx->dpy, xx->w, xx->gc,
+	 xx->xc-xx->arr,xx->yc-xx->arr,
+         xx->arr << 1, xx->arr << 1,
+         0, xx->fullcrcl);
       XSetBackground(xx->dpy, xx->gc, xx->whiteColor);
       XSetForeground(xx->dpy, xx->gc, xx->blackColor);
       XFillArc(xx->dpy, xx->w, xx->gc,
@@ -594,11 +436,13 @@ void telltime(xxfmt *xx)
       secwyy = (int) dblwyy;
       secexx += xx->xc;
       secwyy += xx->yc;
-      plotLine(xx, xx->xc, xx->yc, secexx, secwyy);
+      XDrawLine(xx->dpy, xx->w, xx->gc,
+         xx->xc, xx->yc, secexx, secwyy);
       /*******************************************************/
       /* plot the minute hand                                */
       /*******************************************************/
       thetadeg = ((dblmm * 6.0) + 270.0);
+      thetadeg += (dblss / 60.0) * 6.0;
       if (thetadeg >= 360.0) thetadeg -= 360.0;
       thetarad = (thetadeg / 360.0) * xx->twopi;
       if (thetarad < 0.0) thetarad += xx->twopi;
@@ -610,11 +454,13 @@ void telltime(xxfmt *xx)
       minwyy = (int) dblwyy;
       minexx += xx->xc;
       minwyy += xx->yc;
-      plotLine(xx, xx->xc, xx->yc, minexx, minwyy);
+      XDrawLine(xx->dpy, xx->w, xx->gc,
+         xx->xc, xx->yc, minexx, minwyy);
       /*******************************************************/
       /* plot the hour hand                                  */
       /*******************************************************/
       thetadeg = ((dblhh * 30.0) + 270.0);
+      thetadeg += (dblmm / 12.0) * 6.0;
       if (thetadeg >= 360.0) thetadeg -= 360.0;
       thetarad = (thetadeg / 360.0) * xx->twopi;
       if (thetarad < 0.0) thetarad += xx->twopi;
@@ -626,7 +472,8 @@ void telltime(xxfmt *xx)
       hrwyy = (int) dblwyy;
       hrexx += xx->xc;
       hrwyy += xx->yc;
-      plotLine(xx, xx->xc, xx->yc, hrexx, hrwyy);
+      XDrawLine(xx->dpy, xx->w, xx->gc,
+         xx->xc, xx->yc, hrexx, hrwyy);
       /*******************************************************/
       /* flush the new time                                  */
       /*******************************************************/
@@ -644,10 +491,6 @@ void telltime(xxfmt *xx)
       /* eraase the hour hand                                */
       /*******************************************************/
       eraseLine(xx, xx->xc, xx->yc, hrexx, hrwyy);
-      /*******************************************************/
-      /* flush the old time                                  */
-      /*******************************************************/
-      XFlush(xx->dpy);
       ifkey(xx);
       } /* infinite second loop */
    } /* telltime */
