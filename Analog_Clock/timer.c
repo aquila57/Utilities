@@ -599,6 +599,7 @@ void telltime(xxfmt *xx)
       /* plot the minute hand                                */
       /*******************************************************/
       thetadeg = ((dblmm * 6.0) + 270.0);
+      thetadeg += (dblss / 60.0) * 6.0;
       if (thetadeg >= 360.0) thetadeg -= 360.0;
       thetarad = (thetadeg / 360.0) * xx->twopi;
       if (thetarad < 0.0) thetarad += xx->twopi;
@@ -615,6 +616,7 @@ void telltime(xxfmt *xx)
       /* plot the hour hand                                  */
       /*******************************************************/
       thetadeg = ((dblhh * 30.0) + 270.0);
+      thetadeg += (dblmm / 12.0) * 6.0;
       if (thetadeg >= 360.0) thetadeg -= 360.0;
       thetarad = (thetadeg / 360.0) * xx->twopi;
       if (thetarad < 0.0) thetarad += xx->twopi;
