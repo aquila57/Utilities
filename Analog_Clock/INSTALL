@@ -1,3 +1,6 @@
+Install the beep program.
+
+sudo apt-get install beep
 
 To install this repository:
 
