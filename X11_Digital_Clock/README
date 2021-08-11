@@ -1,7 +1,9 @@
+The package in this directory is part of an umbrella packaged,
+called Utilities.
+
 To install xdgtclk,
-	extract all the files from xdgtclk-0.3.0.tar.gz.
-	change directory to xdgtclk-0.3.0
-	instclk
+	chmod 700 *.sh
+	instclk.sh
 
 You may change the font in xdgtclk.c by changing the compile
 variable for XFONT in xdgtclk.mak.  The font name "12x24" is
@@ -18,7 +20,7 @@ After compiling, move the executables to your private bin
 directory.
 
 To de-install xdgtclk, run
-	deinst
+	deinst.sh
 
 Run xdgtclk in X Windows with the following command:
 

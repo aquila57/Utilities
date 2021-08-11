@@ -1,7 +1,7 @@
 Begin4
 Title: xdgtclk
-Version: 0.2.0
-Entered-date: 2008-12-01
+Version: 0.3.0
+Entered-date: 2021-08-11
 Description: Digital clock for X Windows.
 Toggles between calendar and relative time.
 The purpose of this digital clock is to
@@ -14,11 +14,11 @@ without being intrusive.  This program is
 especially helpful with the Tiny Window
 Manager (twm).
 Keywords: digital clock date relative time Xlib active icon
-Author: dondalah721@yahoo.com (Dondalah)
-Maintained-by: dondalah721@yahoo.com (Dondalah)
-Primary-site: sunsite.unc.edu/pub/Linux/X11/clocks
-24kb xdgtclk-0.2.0.tar.gz
-1kb  xdgtclk-0.2.0.lsm
+Author: https://github.com/aquila57
+Maintained-by: https://github.com/aquila57
+Primary-site: https://github.com/aquila57
+24kb xdgtclk-0.3.0.tar.gz
+1kb  xdgtclk-0.3.0.lsm
 Platforms: Linux, Xlib.
 Copying-policy: GPL
 End
