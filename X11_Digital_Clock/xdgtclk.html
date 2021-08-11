@@ -1,0 +1,234 @@
+<HTML>
+<HEAD>
+<TITLE>
+X Windows Digital Clock
+</TITLE>
+</HEAD>
+
+<BODY>
+
+<P>
+
+<H1 ALIGN=CENTER>
+X Windows Digital Clock
+</H1>
+
+<P>
+
+<H2>
+<A HREF="gpl.html">
+Copying xdgtclk</A>
+</H2>
+
+<P>
+
+<H2>
+Introduction
+</H2>
+
+<P>
+
+This digital clock is designed to run on the TWM window manager.
+The minimized icon conveniently fits into a corner of the
+desktop screen.
+
+<P>
+
+The purpose of this digital clock is to tell time while
+minimizing resources and real estate on the screen.  If
+the seconds toggle is turned off, the window icon is
+updated each minute.  Otherwise, the window icon is
+updated each second.  The window itself is updated
+each second.
+
+<P>
+
+The window icon fits conveniently in the corner of the desktop
+without being intrusive.  The window icon responds to keyboard
+commands, when the mouse touches it.  Likewise, the window
+itself responds to keyboard commands, when the mouse touches it.
+See below for more information on the keyboard commands.
+
+<P>
+
+<H2>
+How To Run
+</H2>
+
+<P>
+
+To start <B> xdgtclk</B> in X Windows, run the command:
+
+<P>
+
+<TT>
+&nbsp; &nbsp; &nbsp; xdgtclk &amp;
+</TT>
+
+<P>
+
+<H2>
+Toggle Seconds
+</H2>
+
+<P>
+
+Press <B> s</B> to toggle the seconds display.
+
+<P>
+
+<H2>
+Toggle Time
+</H2>
+
+<P>
+
+Press <B> t</B> to toggle the time mode.
+
+<P>
+
+The time modes are:
+
+<P>
+
+<UL>
+<LI>
+Time of day.
+<LI>
+Relative time.
+</UL>
+
+<P>
+
+<H2>
+Reset Count
+</H2>
+
+<P>
+
+Press <B> r</B> to reset the time
+in relative time mode.
+
+<P>
+
+<H2>
+Termination
+</H2>
+
+<P>
+
+Press <B> Escape</B> or <B> q</B> to quit.
+
+<P>
+
+<H2>
+Daylight Saving Time
+</H2>
+
+<P>
+<B> xdgtclk</B> uses the <B> TZ</B> variable to
+determine if daylight saving time is in effect.
+See the <B> man</B> page for <B> tzset</B>.
+
+<P>
+Example of setting <B> TZ</B>:
+
+<P>
+<TT>
+&nbsp; &nbsp; &nbsp; TZ=PST8PDT
+</TT>
+
+<P>
+In this example <B> TZ</B> is set for Pacific Time.
+
+<P>
+
+<H2>
+Display
+</H2>
+
+<P>
+<B> xdgtclk</B> shows the following display:
+
+<P>
+
+<UL>
+<LI>
+Day_of_Week
+<LI>
+Month (1-12)
+<LI>
+Day (1-31)
+<LI>
+Hour (0-23)
+<LI>
+Minute (0-59)
+<LI>
+Second (0-59)
+<LI>
+JD (1-366)
+<LI>
+STD/DST
+</UL>
+
+<P>
+
+<H2>
+Window Icon
+</H2>
+
+<P>
+<B> xdgtclk</B> shows the following display when the
+window is minimized:
+
+<P>
+<UL>
+<LI>
+Hour (0-23)
+<LI>
+Minute (0-59)
+<LI>
+Seconds (0-59), optional if seconds are toggled.
+</UL>
+
+<P>
+
+<H2>
+Performance
+</H2>
+
+<P>
+
+<B> xdgtclk</B> sleeps every second to conserve
+resources on your system.
+
+<P>
+
+<H2>
+Font Size
+</H2>
+
+<P>
+
+To change the font size, edit
+<B> xdgtclk.mak</B>.
+Change the value of the <B> FONT</B> compile variable.
+
+<P>
+
+You may also need to redefine the geometry of the screen
+in the source program <B> xdgtclk.c</B>.
+
+<P>
+
+The default font for this version of xdgtclk is the Debian
+font <B> 12x24</B>.
+
+<P>
+
+<HR>
+
+<P>
+
+</BODY>
+</HTML>

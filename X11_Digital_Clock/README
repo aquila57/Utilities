@@ -1,0 +1,34 @@
+To install xdgtclk,
+	extract all the files from xdgtclk-0.3.0.tar.gz.
+	change directory to xdgtclk-0.3.0
+	instclk
+
+You may change the font in xdgtclk.c by changing the compile
+variable for XFONT in xdgtclk.mak.  The font name "12x24" is
+available on Debian.  If you don't have that font on your system,
+you'll have to change fonts.  Try to maintain the same font size.
+Otherwise you'll have to change the geometry in xdgtclk.c.
+
+* Search for the variable XFONT = \"12x24\"
+  in xdgtclk.mak.
+* Change the font name from "12x24" to whatever you have
+  on your system that is the same size.
+
+After compiling, move the executables to your private bin
+directory.
+
+To de-install xdgtclk, run
+	deinst
+
+Run xdgtclk in X Windows with the following command:
+
+	xdgtclk &
+
+Press escape or 'q' to exit.
+
+If you encounter problems, please send me:
+
+	A detailed description of your compile steps.
+	A detailed description of the problem.
+
+Browse xdgtclk.html for documentation.

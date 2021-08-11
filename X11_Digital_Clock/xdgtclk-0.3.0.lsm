@@ -1,0 +1,25 @@
+Begin4
+Title: xdgtclk
+Version: 0.2.0
+Entered-date: 2008-12-01
+Description: Digital clock for X Windows.
+Toggles between calendar and relative time.
+The purpose of this digital clock is to
+minimize resources and real estate on the
+screen.  The window icon is updated each
+minute, and the window itself is updated
+each second.  The active window icon fits
+conveniently in the corner of the desktop
+without being intrusive.  This program is
+especially helpful with the Tiny Window
+Manager (twm).
+Keywords: digital clock date relative time Xlib active icon
+Author: dondalah721@yahoo.com (Dondalah)
+Maintained-by: dondalah721@yahoo.com (Dondalah)
+Primary-site: sunsite.unc.edu/pub/Linux/X11/clocks
+24kb xdgtclk-0.2.0.tar.gz
+1kb  xdgtclk-0.2.0.lsm
+Platforms: Linux, Xlib.
+Copying-policy: GPL
+End
+
