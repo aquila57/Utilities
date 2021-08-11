@@ -22,3 +22,5 @@ Random_Lists - Create random lists of letters and numbers.
 Scramble - Scramble the order of a list of text.
 
 Word_List - Count the number of times each word occurs in a large text file.
+
+X11_Digital_Clock - Digital clock to run under the TWM window manager.
